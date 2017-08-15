@@ -1,5 +1,5 @@
 # Tensorflow
-use TensorFlow Devploment project and idea
+
                                                    深入卷积神经网络
 项目概括：本项目采用卷积神经网络对MNIST手写数字进行分类识别。项目开发使用工具是pycharm,项目开发语言采用Tensorflow,项目采用的数据是Tensorflow 中mnist数据集。
 项目的目的是通过卷积神经网络对mnist数据集进行训练，建立模型，用于识别新的手写数字，即从图片中识别出手写的数字。
@@ -75,15 +75,13 @@ use TensorFlow Devploment project and idea
 卷积核的数量k的增加，准确率提高的也越快
 
 卷积核数量与准确率呈现正相关
+
 3.改变激活函数对网络影响
    目前conv2d 5x5x1  k =16  七个激活函数，注:全连接层为线性激活函数
 
 在众多的激活函数中，在目前的设计模型中relu,relu6,elu 表现比较优异
 
 下面是conv2d 层的激活函数固定，全连接层激活函数进行改变
-
-
-
 全连接层激活函数变化中relu和relu6表现并不好
 4.学习率对网络性能的影响
   网络模型：conv2d+relu+maxpool+linear_fc
@@ -91,17 +89,20 @@ use TensorFlow Devploment project and idea
 
 
 学习率对于模型的影响是非常大的，因此选择合适的学习率非常重要
+
 5.池化层的maxpool 和avgpool的差异对比
    训练模型为：conv2d+relu+pool(maxpool/avgpool)+fc_linear   learning_rate =0.01
 
 
 在当前的模型下，maxpool和avgpool 差异不大，在learning_rate=0.01情况下，测试集上的准确率都能达到98%左右
+
 6.权重初始化，当前初始化，采用标准正态分布，stddev的值对初始化有一定影响。
 网络模型：conv2d+relu+maxpool+fc_linear learning_rate=0.01
   Stddev：1e-14,0.0001,0.001,0.01,0.1
 
 
 从图上可以看出，当std=1e-14时，损失不能降低，准确率维持在10%左右。0.0001-0.1之间损失和准确率变化没有特殊。
+
 7.tf.train时的优化器对网络影响。
   网络模型：conv2d+relu+maxpool+fc_linear    learning_rate=0.01  stdd=0.0001
   一共有十个优化器，下面对比不同优化器对网络影响。
@@ -112,6 +113,7 @@ use TensorFlow Devploment project and idea
 项目架构采用简单卷积神经网络，一个卷积层，一个池化层，一个全连接层。项目架构虽然简单包含了卷积神经网络的基本构件。项目进行了大量的调参工作，对比不同参数对损失值和准确率的影响。其中卷积核数，激活函数，学习率对项目的影响有显著的规律。
 根据调参数据优化网络模型为：
 Con2d+relu6+maxpool+fc_linear  learning_rate=0.01 stdd=0.001 opti=FtrlOptimizer  k=32=0.01 stdd=0.001 opti=FtrlOptimizer  k=32
-在当前模型下运行三次求其平均值绘制下图
+
+详细内容请看 卷积神经网络深入学习.docx 文件
 
 
